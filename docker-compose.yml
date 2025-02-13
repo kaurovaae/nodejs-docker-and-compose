@@ -1,0 +1,48 @@
+services:
+  backend:
+    container_name: kupipodariday-backend
+    env_file: .env
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    image: ${BACKEND_IMAGE}
+    ports:
+      - ${BACKEND_PUBLIC_PORT}:${BACKEND_PRIVATE_PORT}
+    networks:
+      - internal
+
+  frontend:
+    container_name: kupipodariday-frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    image: ${FRONTEND_IMAGE}
+    ports:
+      - ${FRONTEND_PUBLIC_PORT}:${FRONTEND_PRIVATE_PORT}
+    networks:
+      - external
+
+  postgres:
+    container_name: postgres
+    image: postgres:alpine
+    env_file: .env
+    restart: always
+    volumes:
+      - postgres_data:${PGDATA}
+    networks:
+      - internal
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - ${ADMINER_PORT}:${ADMINER_PORT}
+    networks:
+      - internal
+
+volumes:
+  postgres_data:
+
+networks:
+  internal:
+  external:
