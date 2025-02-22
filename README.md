@@ -27,6 +27,5 @@ docker compose -f docker-compose.prod.yml up -d --build
 ```
 
 ## Адреса
-- IP адрес 84.201.133.101
 - Frontend https://annie.kpd.nomorepartiesco.ru/
 - Backend https://api.annie.kpd.nomorepartiesco.ru/  
