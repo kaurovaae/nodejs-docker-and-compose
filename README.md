@@ -25,7 +25,3 @@ cd kupipodariday
 docker compose -f docker-compose.prod.yml down
 docker compose -f docker-compose.prod.yml up -d --build
 ```
-
-## Адреса
-- Frontend https://annie.kpd.nomorepartiesco.ru/
-- Backend https://api.annie.kpd.nomorepartiesco.ru/  
